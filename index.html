@@ -1,12 +1,187 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>テスト公開</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>屁糞尿報告会 公式</title>
+
+<style>
+:root{
+  --bg1:#0f2027;
+  --bg2:#203a43;
+  --bg3:#2c5364;
+  --accent:#ffd166;
+  --text:#f5f7fa;
+  --sub:#cbd5e1;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);
+  line-height:1.7;
+}
+
+header{
+  padding:80px 20px;
+  text-align:center;
+}
+
+header h1{
+  font-size:3rem;
+  letter-spacing:0.1em;
+}
+
+header p{
+  margin-top:20px;
+  color:var(--sub);
+  font-size:1.1rem;
+}
+
+section{
+  max-width:900px;
+  margin:0 auto;
+  padding:60px 20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  border-radius:20px;
+  padding:40px;
+  margin-bottom:40px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.card h2{
+  font-size:1.8rem;
+  margin-bottom:20px;
+  color:var(--accent);
+}
+
+.card p{
+  color:var(--sub);
+}
+
+ul{
+  margin-top:20px;
+  padding-left:20px;
+}
+
+li{
+  margin-bottom:10px;
+}
+
+.hero-btn{
+  display:inline-block;
+  margin-top:40px;
+  padding:15px 40px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#1e293b;
+  font-weight:bold;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.hero-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+footer{
+  text-align:center;
+  padding:40px 20px;
+  color:#94a3b8;
+  font-size:0.9rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.15);
+  font-size:0.8rem;
+  margin-right:8px;
+}
+</style>
 </head>
+
 <body>
-  <h1>Hello World</h1>
-  <p>一時公開用ページです</p>
+
+<header>
+  <span class="badge">公式</span>
+  <span class="badge">非営利</span>
+  <span class="badge">完全任意</span>
+
+  <h1>屁糞尿報告会</h1>
+  <p>
+    日常を、簡潔に、淡々と報告するための<br>
+    極めて形式的な文化活動
+  </p>
+
+  <a href="#about" class="hero-btn">概要を見る</a>
+</header>
+
+<section id="about">
+  <div class="card">
+    <h2>概要</h2>
+    <p>
+      屁糞尿報告会は、日々の体調や生活上の出来事を、
+      感情や装飾を排し、最小限の情報として「報告」することを
+      目的とした任意団体です。
+    </p>
+    <p>
+      本会は報告内容の有用性や価値判断を行わず、
+      「報告そのもの」を成立させることを唯一の目的としています。
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>基本理念</h2>
+    <ul>
+      <li>報告は簡潔であること</li>
+      <li>評価・感想・議論を伴わないこと</li>
+      <li>事実と形式を最優先すること</li>
+      <li>継続性を重視すること</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>活動内容</h2>
+    <ul>
+      <li>定期的な報告の実施</li>
+      <li>報告様式の維持および共有</li>
+      <li>記録の保存（任意）</li>
+      <li>文化的研究および考察（非公式）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>運営体制</h2>
+    <p>
+      本会は、Y会長を中心に、
+      明確な序列や権限を極力設けない形で運営されています。
+    </p>
+    <p>
+      参加・離脱はいずれも自由であり、
+      強制される義務や責任は存在しません。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 屁糞尿報告会</p>
+  <p>本サイトは一時的な公開を目的としています。</p>
+</footer>
+
 </body>
 </html>
