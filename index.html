@@ -1,187 +1,1005 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>屁糞尿報告会 公式</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark" />
+<title>屁糞尿報告会 公式ホームページ</title>
+<meta name="description" content="屁糞尿報告会 公式ホームページ。主宰：Y会長。報告は簡潔に、正確に、淡々と。" />
 
 <style>
+/* =========================================================
+   HE-FUNNYO REPORTING SOCIETY — Ceremonial Single Page
+   - No external dependencies (fonts/icons)
+   - GitHub Pages friendly
+========================================================= */
+
 :root{
-  --bg1:#0f2027;
-  --bg2:#203a43;
-  --bg3:#2c5364;
-  --accent:#ffd166;
-  --text:#f5f7fa;
-  --sub:#cbd5e1;
+  /* Night-ceremony palette */
+  --bg0:#06070b;
+  --bg1:#080a10;
+  --bg2:#0b0f1a;
+  --bg3:#10192b;
+
+  --gold1:#f7e7a9;
+  --gold2:#ffd166;
+  --gold3:#caa45a;
+  --gold4:#7c6234;
+
+  --ice:#7ae7ff;
+  --ink:#0b0e16;
+
+  --text:#f4f7ff;
+  --sub:#c7cfdf;
+  --muted:#9aa6bd;
+
+  --card: rgba(255,255,255,0.06);
+  --card2: rgba(255,255,255,0.085);
+  --border: rgba(255,255,255,0.12);
+  --border2: rgba(255,255,255,0.18);
+
+  --shadow: 0 28px 70px rgba(0,0,0,0.55);
+  --shadow2: 0 18px 40px rgba(0,0,0,0.35);
+
+  --radius-xl: 26px;
+  --radius-lg: 20px;
+  --radius-md: 16px;
+
+  --max: 1080px;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Segoe UI","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
-}
-
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
 body{
-  min-height:100vh;
-  background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
-  color:var(--text);
-  line-height:1.7;
+  margin:0;
+  color: var(--text);
+  background:
+    radial-gradient(900px 600px at 15% 8%, rgba(255,209,102,0.12), transparent 60%),
+    radial-gradient(760px 520px at 90% 18%, rgba(122,231,255,0.10), transparent 55%),
+    radial-gradient(700px 520px at 50% 110%, rgba(255,209,102,0.08), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg2) 45%, var(--bg3) 100%);
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", "Times New Roman", serif;
+  line-height: 1.8;
+  overflow-x:hidden;
 }
 
-header{
-  padding:80px 20px;
+/* Subtle grain */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(transparent, transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.12;
+}
+
+/* Floating ceremonial orbs */
+.orb{
+  position:fixed;
+  width:560px;
+  height:560px;
+  border-radius:999px;
+  filter: blur(55px);
+  opacity: 0.18;
+  pointer-events:none;
+  animation: floaty 12s ease-in-out infinite;
+  z-index:0;
+}
+.orb.one{
+  left:-170px;
+  top:120px;
+  background: radial-gradient(circle, rgba(255,209,102,1), transparent 55%);
+}
+.orb.two{
+  right:-210px;
+  top:30px;
+  background: radial-gradient(circle, rgba(122,231,255,1), transparent 55%);
+  animation-duration: 14s;
+}
+.orb.three{
+  left:22%;
+  bottom:-320px;
+  width:720px;
+  height:720px;
+  opacity:0.14;
+  background: radial-gradient(circle, rgba(202,164,90,1), transparent 60%);
+  animation-duration: 16s;
+}
+
+@keyframes floaty{
+  0%,100%{ transform: translate(0,0) scale(1); }
+  50%{ transform: translate(14px,-22px) scale(1.035); }
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible{
+  outline: 2px solid rgba(255,209,102,0.75);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.wrap{
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* ---------- Top nav (floating) ---------- */
+.topbar{
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  margin-top: 12px;
+}
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(12,14,22,0.62);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width: 0;
+}
+.brand .sigil{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,209,102,0.95), rgba(202,164,90,0.55) 60%, rgba(0,0,0,0) 70%),
+    linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,209,102,0.22);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  position:relative;
+}
+.brand .sigil::after{
+  content:"Y";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-family: "Times New Roman", serif;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: rgba(15,20,30,0.95);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+}
+.brand .name{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+  min-width:0;
+}
+.brand .name .t1{
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+.brand .name .t2{
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: rgba(244,247,255,0.90);
+  font-size: 0.88rem;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.pill:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.085);
+  border-color: rgba(255,255,255,0.22);
+}
+.pill .dot{
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--gold2);
+  box-shadow: 0 0 0 4px rgba(255,209,102,0.12);
+}
+.pill .xmark{
+  width: 14px; height:14px;
+  display:inline-block;
+  position:relative;
+  opacity: 0.95;
+}
+.pill .xmark::before,
+.pill .xmark::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: 12px;
+  height: 2px;
+  background: rgba(244,247,255,0.88);
+  transform-origin:center;
+  border-radius:999px;
+}
+.pill .xmark::before{ transform: translate(-50%,-50%) rotate(45deg); }
+.pill .xmark::after { transform: translate(-50%,-50%) rotate(-45deg); }
+
+@media (max-width: 920px){
+  .topbar-inner{ border-radius: 22px; padding: 12px; }
+}
+@media (max-width: 700px){
+  .navlinks{ gap: 8px; }
+  .pill{ font-size: 0.84rem; padding: 8px 10px; }
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding: 34px 0 20px;
+}
+.hero-grid{
+  margin-top: 26px;
+  display:grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 18px;
+  align-items:stretch;
+}
+@media (max-width: 920px){
+  .hero-grid{ grid-template-columns: 1fr; }
+}
+
+.hero-title{
   text-align:center;
+  padding: 46px 0 10px;
+}
+.hero-title .badges{
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap:wrap;
+  margin-bottom: 16px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  font-family: "Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+}
+.badge b{ color: var(--gold2); font-weight: 900; letter-spacing: 0.08em; }
+.hero-title h1{
+  font-size: clamp(2.3rem, 5vw, 3.25rem);
+  letter-spacing: 0.18em;
+  margin: 10px 0 10px;
+  text-shadow: 0 28px 70px rgba(0,0,0,0.45);
+}
+.hero-title p{
+  margin: 0 auto;
+  max-width: 52ch;
+  color: var(--sub);
+  font-size: 1.08rem;
+  letter-spacing: 0.04em;
 }
 
-header h1{
-  font-size:3rem;
-  letter-spacing:0.1em;
+/* ornamental divider */
+.divider{
+  margin: 26px auto 0;
+  width: min(680px, 90%);
+  height: 22px;
+  position:relative;
+  opacity:0.9;
 }
-
-header p{
-  margin-top:20px;
-  color:var(--sub);
-  font-size:1.1rem;
+.divider::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:50%;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,209,102,0.35), rgba(255,255,255,0.14), rgba(255,209,102,0.35), transparent);
 }
-
-section{
-  max-width:900px;
-  margin:0 auto;
-  padding:60px 20px;
+.divider::after{
+  content:"◆";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-58%);
+  color: rgba(255,209,102,0.85);
+  text-shadow: 0 10px 18px rgba(0,0,0,0.35);
+  font-size: 1.05rem;
 }
 
 .card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter: blur(8px);
-  border-radius:20px;
-  padding:40px;
-  margin-bottom:40px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.045));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.card-inner{
+  padding: 28px;
 }
 
-.card h2{
-  font-size:1.8rem;
-  margin-bottom:20px;
-  color:var(--accent);
+.card-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 14px;
+}
+.card-title h2{
+  margin:0;
+  font-size: 1.62rem;
+  letter-spacing: 0.08em;
+  color: var(--gold1);
+}
+.card-title .kicker{
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  color: rgba(199,207,223,0.80);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.card p{
-  color:var(--sub);
+/* Y Chairman block */
+.chairman{
+  position:relative;
+  background:
+    radial-gradient(520px 240px at 12% 10%, rgba(255,209,102,0.20), transparent 60%),
+    radial-gradient(460px 220px at 90% 24%, rgba(122,231,255,0.14), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+}
+.chairman::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: var(--radius-xl);
+  padding:1px;
+  background: linear-gradient(135deg, rgba(255,209,102,0.55), rgba(255,255,255,0.10), rgba(122,231,255,0.22));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events:none;
+}
+.chairman .crest{
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  margin-top: 6px;
+}
+.crest-emblem{
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,209,102,1), rgba(202,164,90,0.45) 62%, rgba(0,0,0,0) 72%),
+    linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,209,102,0.24);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.40);
+  position:relative;
+}
+.crest-emblem::after{
+  content:"Y";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-weight: 900;
+  font-size: 1.22rem;
+  letter-spacing: 0.08em;
+  color: rgba(15,20,30,0.95);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.30);
+  font-family: "Times New Roman", serif;
+}
+.crest-text{
+  min-width:0;
+}
+.crest-text .line1{
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  letter-spacing: 0.16em;
+  color: rgba(244,247,255,0.92);
+  font-weight: 900;
+}
+.crest-text .line2{
+  margin-top: 4px;
+  color: rgba(199,207,223,0.82);
+  font-size: 0.95rem;
+}
+blockquote.motto{
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-left: 3px solid rgba(255,209,102,0.62);
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  color: rgba(244,247,255,0.90);
+}
+blockquote.motto b{
+  color: var(--gold2);
 }
 
-ul{
-  margin-top:20px;
-  padding-left:20px;
+/* Buttons */
+.actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap:wrap;
+  margin-top: 18px;
 }
-
-li{
-  margin-bottom:10px;
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: rgba(244,247,255,0.92);
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  user-select:none;
 }
-
-.hero-btn{
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow2);
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+}
+.btn.primary{
+  background: linear-gradient(135deg, rgba(255,209,102,1), rgba(202,164,90,0.92));
+  border-color: rgba(255,209,102,0.46);
+  color: rgba(10,12,18,0.92);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+.btn.primary:hover{
+  background: linear-gradient(135deg, rgba(255,209,102,1), rgba(202,164,90,1));
+  border-color: rgba(255,209,102,0.60);
+}
+.icon-link{
+  width: 18px; height:18px;
   display:inline-block;
-  margin-top:40px;
-  padding:15px 40px;
-  border-radius:999px;
-  background:var(--accent);
-  color:#1e293b;
-  font-weight:bold;
-  text-decoration:none;
-  transition:0.3s;
+  position:relative;
+}
+.icon-link::before{
+  content:"";
+  position:absolute;
+  inset: 3px 2px 2px 3px;
+  border: 2px solid currentColor;
+  border-radius: 5px;
+  opacity: 0.9;
+}
+.icon-link::after{
+  content:"";
+  position:absolute;
+  right: 2px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.95;
 }
 
-.hero-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+.note{
+  margin-top: 10px;
+  color: rgba(199,207,223,0.70);
+  font-size: 0.82rem;
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
 }
 
+/* KPI tiles */
+.kpis{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.kpi{
+  padding: 16px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+}
+.kpi .label{
+  color: rgba(154,166,189,0.92);
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+}
+.kpi .value{
+  margin-top: 6px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  font-size: 1.10rem;
+}
+.kpi .value span{ color: var(--gold2); }
+
+/* Section layout */
+.section{
+  margin-top: 18px;
+}
+.section-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+@media (max-width: 920px){
+  .section-grid{ grid-template-columns: 1fr; }
+}
+.section h3{
+  margin: 0 0 10px;
+  color: rgba(247,231,169,0.95);
+  letter-spacing: 0.08em;
+  font-size: 1.25rem;
+}
+.p{
+  color: rgba(199,207,223,0.88);
+  margin: 0;
+}
+.list{
+  margin: 12px 0 0;
+  padding: 0 0 0 18px;
+  color: rgba(199,207,223,0.88);
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+}
+.list li{ margin: 8px 0; }
+
+/* Decorative section divider */
+.hr{
+  height: 1px;
+  margin: 28px 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), rgba(255,209,102,0.20), rgba(255,255,255,0.18), transparent);
+}
+
+/* Accordion (history) */
+details{
+  margin-top: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.055);
+  overflow:hidden;
+}
+details[open]{
+  background: rgba(255,255,255,0.085);
+  border-color: rgba(255,255,255,0.20);
+}
+summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+summary::-webkit-details-marker{ display:none; }
+.chev{
+  width: 11px; height: 11px;
+  border-right: 2px solid rgba(255,255,255,0.82);
+  border-bottom: 2px solid rgba(255,255,255,0.82);
+  transform: rotate(45deg);
+  transition: transform .2s ease;
+  opacity: 0.85;
+  flex: 0 0 auto;
+}
+details[open] .chev{ transform: rotate(225deg); }
+
+.details-body{
+  padding: 0 16px 16px;
+  color: rgba(199,207,223,0.90);
+}
+.details-body p{
+  margin: 10px 0 0;
+  font-family:"Hiragino Mincho ProN","Yu Mincho","MS Mincho","Times New Roman",serif;
+}
+.details-body .meta{
+  margin-top: 10px;
+  font-size: 0.86rem;
+  color: rgba(154,166,189,0.92);
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+}
+
+/* Footer */
 footer{
+  margin-top: 42px;
+  padding: 38px 0 46px;
+  border-top: 1px solid rgba(255,255,255,0.10);
   text-align:center;
-  padding:40px 20px;
-  color:#94a3b8;
-  font-size:0.9rem;
-  border-top:1px solid rgba(255,255,255,0.1);
+  color: rgba(154,166,189,0.95);
+  font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+}
+.footer-row{
+  display:flex;
+  justify-content:center;
+  gap: 12px;
+  flex-wrap:wrap;
+  margin-top: 12px;
+}
+.footer-pill{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: rgba(199,207,223,0.88);
+}
+.footer-note{
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: rgba(199,207,223,0.72);
 }
 
-.badge{
-  display:inline-block;
-  padding:6px 14px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.15);
-  font-size:0.8rem;
-  margin-right:8px;
+/* Scroll anchor spacing */
+.anchor{
+  scroll-margin-top: 92px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .orb{ animation:none; }
+  .btn, .pill{ transition:none; }
 }
 </style>
 </head>
 
 <body>
+  <!-- Ceremonial ambience -->
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
 
-<header>
-  <span class="badge">公式</span>
-  <span class="badge">非営利</span>
-  <span class="badge">完全任意</span>
+  <!-- Floating Top Bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="sigil" aria-hidden="true"></div>
+          <div class="name">
+            <div class="t1">屁糞尿報告会</div>
+            <div class="t2">Official — Chairman: Y会長</div>
+          </div>
+        </div>
 
-  <h1>屁糞尿報告会</h1>
-  <p>
-    日常を、簡潔に、淡々と報告するための<br>
-    極めて形式的な文化活動
-  </p>
-
-  <a href="#about" class="hero-btn">概要を見る</a>
-</header>
-
-<section id="about">
-  <div class="card">
-    <h2>概要</h2>
-    <p>
-      屁糞尿報告会は、日々の体調や生活上の出来事を、
-      感情や装飾を排し、最小限の情報として「報告」することを
-      目的とした任意団体です。
-    </p>
-    <p>
-      本会は報告内容の有用性や価値判断を行わず、
-      「報告そのもの」を成立させることを唯一の目的としています。
-    </p>
+        <nav class="navlinks" aria-label="サイト内リンク">
+          <a class="pill" href="#about"><span class="dot"></span>概要</a>
+          <a class="pill" href="#format"><span class="dot"></span>報告様式</a>
+          <a class="pill" href="#history"><span class="dot"></span>歴史</a>
+          <a class="pill" href="rules.html"><span class="dot"></span>会則</a>
+          <a class="pill" href="https://x.com/He_Funnyo" target="_blank" rel="noopener">
+            <span class="xmark" aria-hidden="true"></span>公式X
+          </a>
+        </nav>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>基本理念</h2>
-    <ul>
-      <li>報告は簡潔であること</li>
-      <li>評価・感想・議論を伴わないこと</li>
-      <li>事実と形式を最優先すること</li>
-      <li>継続性を重視すること</li>
-    </ul>
-  </div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-title">
+        <div class="badges">
+          <span class="badge"><b>公式</b> / Official</span>
+          <span class="badge"><b>非営利</b> / Non-profit</span>
+          <span class="badge"><b>完全任意</b> / Voluntary</span>
+        </div>
 
-  <div class="card">
-    <h2>活動内容</h2>
-    <ul>
-      <li>定期的な報告の実施</li>
-      <li>報告様式の維持および共有</li>
-      <li>記録の保存（任意）</li>
-      <li>文化的研究および考察（非公式）</li>
-    </ul>
-  </div>
+        <h1>屁糞尿報告会</h1>
+        <p>
+          日常を、簡潔に、正確に、淡々と報告する。<br />
+          その形式を守り抜く、静謐なる儀式。
+        </p>
 
-  <div class="card">
-    <h2>運営体制</h2>
-    <p>
-      本会は、Y会長を中心に、
-      明確な序列や権限を極力設けない形で運営されています。
-    </p>
-    <p>
-      参加・離脱はいずれも自由であり、
-      強制される義務や責任は存在しません。
-    </p>
-  </div>
-</section>
+        <div class="divider" aria-hidden="true"></div>
+      </div>
 
-<footer>
-  <p>© 屁糞尿報告会</p>
-  <p>本サイトは一時的な公開を目的としています。</p>
-</footer>
+      <div class="hero-grid">
+        <!-- Chairman Card -->
+        <section class="card chairman" id="about">
+          <div class="card-inner">
+            <div class="card-title">
+              <h2>主宰：Y会長</h2>
+              <div class="kicker">Chairman’s Presence</div>
+            </div>
 
+            <div class="crest">
+              <div class="crest-emblem" aria-hidden="true"></div>
+              <div class="crest-text">
+                <div class="line1">Y会長による創始と指針</div>
+                <div class="line2">報告は「成立」した瞬間に、その目的を達成する。</div>
+              </div>
+            </div>
+
+            <blockquote class="motto">
+              合言葉：<b>「短く、正確に、淡々と。」</b><br />
+              価値判断を退け、形式を守る。
+            </blockquote>
+
+            <div class="actions">
+              <a class="btn primary" href="#history">歴史アーカイブ</a>
+              <a class="btn" href="#format">報告様式</a>
+              <a class="btn" href="rules.html">会則</a>
+              <a class="btn" href="https://x.com/He_Funnyo" target="_blank" rel="noopener">
+                <span class="icon-link" aria-hidden="true"></span>公式X
+              </a>
+            </div>
+
+            <div class="note">※このホームページは報告会から委託されて作成されています</div>
+          </div>
+        </section>
+
+        <!-- KPI Card -->
+        <aside class="card">
+          <div class="card-inner">
+            <div class="card-title">
+              <h2>会の指標</h2>
+              <div class="kicker">Principles</div>
+            </div>
+
+            <div class="kpis" style="margin-top:12px;">
+              <div class="kpi">
+                <div class="label">理念</div>
+                <div class="value"><span>形式</span>の維持</div>
+              </div>
+              <div class="kpi">
+                <div class="label">評価</div>
+                <div class="value">原則<span>不介入</span></div>
+              </div>
+              <div class="kpi">
+                <div class="label">参加</div>
+                <div class="value"><span>自由</span>参加</div>
+              </div>
+              <div class="kpi">
+                <div class="label">責務</div>
+                <div class="value">実質<span>ゼロ</span></div>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <p class="p" style="font-family:'Hiragino Mincho ProN','Yu Mincho','MS Mincho','Times New Roman',serif;">
+              本会は報告内容の価値判断を行いません。<br />
+              報告が成立した時点で、目的は達成されます。
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hr"></div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="wrap">
+    <section class="section-grid">
+      <section class="card anchor" id="format">
+        <div class="card-inner">
+          <h3>報告様式（推奨）</h3>
+          <p class="p">
+            報告は「事実の最小単位」で記述することが推奨されます。<br />
+            修辞は控え、情報は短く、形式は厳格に。
+          </p>
+          <ul class="list">
+            <li>主観・感想を付さない（例：「つらい」「最高」など）</li>
+            <li>事実のみを記す（推測語の乱用を避ける）</li>
+            <li>文字数は短いほど良い</li>
+            <li>追記・訂正は許容（ただし簡潔に）</li>
+          </ul>
+          <div class="hr"></div>
+          <p class="p" style="color:rgba(244,247,255,0.90);">
+            例：<br />
+            「本日、報告あり。以上。」<br />
+            「異常なし。以上。」<br />
+            「記録のみ。以上。」
+          </p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-inner">
+          <h3>基本理念</h3>
+          <ul class="list">
+            <li>報告は簡潔であること</li>
+            <li>評価・感想・議論を伴わないこと</li>
+            <li>事実と形式を最優先すること</li>
+            <li>継続性を重視すること（ただし義務ではない）</li>
+          </ul>
+          <div class="hr"></div>
+          <h3>活動内容</h3>
+          <ul class="list">
+            <li>定期的な報告の実施（任意）</li>
+            <li>報告様式の維持・共有</li>
+            <li>記録の保存（任意）</li>
+            <li>文化的研究および考察（非公式）</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <section class="section">
+      <section class="card anchor" id="history">
+        <div class="card-inner">
+          <div class="card-title">
+            <h2>屁糞尿報告会の歴史（アーカイブ）</h2>
+            <div class="kicker">Chronicles</div>
+          </div>
+          <p class="p" style="margin-top:10px;">
+            以下は <span style="color:var(--gold2); font-weight:900;">Y会長</span> の公的見解および口伝資料に基づく整理です。<br />
+            必要に応じて随時追補されます。
+          </p>
+
+          <details>
+            <summary>
+              <span>第I期：萌芽 — 「報告は短くてよい」宣言</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="details-body">
+              <p>
+                ある日、Y会長が「報告は短くてよい」と述べた。
+                それまで雑談に埋没していた体調報告は、一行の形式として独立し始めた。
+                “短文化”は価値ではなく“形式”として扱われ、報告は儀式化への第一歩を踏み出した。
+              </p>
+              <div class="meta">備考：最古の記録は「本日、報告あり。」の一文とされる。</div>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>第II期：制度化 — 様式の固定と「評価不介入」</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="details-body">
+              <p>
+                報告への反応（励まし・揶揄・診断）が増加したことを受け、
+                Y会長は「評価不介入」を明文化した。
+                これにより報告は“コメントの対象”ではなく、“成立した事実”として保存される。
+                報告の場は静けさを取り戻し、形式が安定した。
+              </p>
+              <div class="meta">備考：この時期に「以上。」の終止が広く定着した。</div>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>第III期：拡張 — 記録派と無記録派の共存</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="details-body">
+              <p>
+                「記録して残す」流派と「その場限りでよい」流派が並立した。
+                いずれも正統とされ、対立は回避される。
+                Y会長は「継続は目的ではなく、結果である」と述べ、
+                参加者の自由度を最大化した。
+              </p>
+              <div class="meta">備考：ここで「完全任意」が理念として明確化された。</div>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>第IV期：整備 — 用語統一と最小単位主義</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="details-body">
+              <p>
+                曖昧語（「たぶん」「なんか」）の多用が増えたため、
+                Y会長は“最小単位主義”を提唱した。
+                「何が起きたか」だけを書く――その単純さが、形式の強度を生んだ。
+                報告は短く、情報密度は高く、そして沈黙は美徳となった。
+              </p>
+              <div class="meta">備考：「主観の切除」という言い回しがこの頃から用いられる。</div>
+            </div>
+          </details>
+
+          <details open>
+            <summary>
+              <span>現行：現代 — 対外公開と委任制作サイトの設置</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="details-body">
+              <p>
+                本ページは、報告会の広報目的により、外部へ公開された最小構成の案内サイトである。
+                ここでもY会長の方針に従い、説明は簡潔に、価値判断は排し、形式を優先する。
+                外部連絡先として公式Xが整備され、会則（別頁）の制定準備が進められている。
+              </p>
+              <div class="meta">備考：会則の内容は別途指示により追加予定。</div>
+            </div>
+          </details>
+
+          <div class="hr"></div>
+
+          <div class="actions">
+            <a class="btn primary" href="rules.html">会則へ進む</a>
+            <a class="btn" href="https://x.com/He_Funnyo" target="_blank" rel="noopener">
+              <span class="icon-link" aria-hidden="true"></span>公式Xを見る
+            </a>
+            <a class="btn" href="#about">Y会長へ戻る</a>
+          </div>
+
+          <div class="note">※このホームページは報告会から委託されて作成されています</div>
+        </div>
+      </section>
+    </section>
+
+    <section class="section">
+      <section class="card">
+        <div class="card-inner">
+          <div class="card-title">
+            <h2>運営体制</h2>
+            <div class="kicker">Operations</div>
+          </div>
+          <p class="p" style="margin-top:10px;">
+            本会は <span style="color:var(--gold2); font-weight:900;">Y会長</span> を中心に、
+            明確な序列や権限を極力設けない形で運営されています。
+          </p>
+          <p class="p" style="margin-top:12px;">
+            参加・離脱はいずれも自由であり、強制される義務や責任は存在しません。
+            形式の遵守は推奨されますが、個々の報告のあり方は尊重されます。
+          </p>
+          <div class="hr"></div>
+          <p class="p" style="color:rgba(199,207,223,0.85);">
+            外部リンク：<br />
+            ・<a class="btn" style="padding:10px 14px; margin-top:8px;" href="https://x.com/He_Funnyo" target="_blank" rel="noopener"><span class="icon-link" aria-hidden="true"></span>公式X</a>
+            ・<a class="btn" style="padding:10px 14px; margin-top:8px;" href="rules.html">会則</a>
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div style="letter-spacing:0.10em; font-weight:900; color: rgba(244,247,255,0.92);">
+      © 屁糞尿報告会
+    </div>
+
+    <div class="footer-row">
+      <span class="footer-pill">主宰：Y会長</span>
+      <span class="footer-pill">理念：形式の維持</span>
+      <span class="footer-pill">運用：完全任意</span>
+      <a class="footer-pill" href="rules.html">会則</a>
+      <a class="footer-pill" href="https://x.com/He_Funnyo" target="_blank" rel="noopener">公式X</a>
+    </div>
+
+    <div class="footer-note">※このホームページは報告会から委託されて作成されています</div>
+  </footer>
 </body>
 </html>
